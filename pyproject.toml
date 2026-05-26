@@ -1,0 +1,28 @@
+[project]
+name = "test-pynvvideocodec-pytorch"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10"
+
+dependencies = [
+    "opencv-python>=4.13.0.92",
+    "pynvvideocodec>=2.1.0",
+    "torch==2.10.0+cu126",
+    "torchvision==0.25+cu126",
+]
+
+[dependency-groups]
+dev = [
+    "ipython>=8.38.0",
+]
+
+[tool.uv.sources]
+torch = { index = "torch-cuda" }
+torchvision = { index = "torch-cuda" }
+
+[[tool.uv.index]]
+name = "torch-cuda"
+url = "https://download.pytorch.org/whl/cu126"
+explicit = true
+
