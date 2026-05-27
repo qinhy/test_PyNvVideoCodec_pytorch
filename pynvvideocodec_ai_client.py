@@ -168,7 +168,7 @@ def decode_and_infer_worker(
     spec: StreamSpec,
     gpu_id: int,
     stop_event: threading.Event,
-    model: torch.nn.Module,
+    model: DummyAI,
 ):
     while not stop_event.is_set():
         feeder = SocketFeeder(ip, spec.port, stop_event)
@@ -223,7 +223,7 @@ def decode_and_infer_worker(
                     ai_input = preprocess_for_ai(tensor)
 
                     with torch.inference_mode():
-                        result = model(ai_input)
+                        result = model.forward(ai_input)
 
                     frame_count += 1
 
